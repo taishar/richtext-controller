@@ -35,7 +35,7 @@ export class RTParagraph
 		}
 		this.text = this.text.slice(0, start) + add + this.text.slice(end);
 		// console.log('result', this.text);
-		this.editor.selection.moveOffset(add.length);
+		this.editor.selection.setOffset(start + add.length);
 	}
 
 	removeText(start: number, end: number)
@@ -52,12 +52,12 @@ export class RTParagraph
 			end = swap;
 		}
 		this.text = this.text.slice(0, start) + this.text.slice(end);
-		this.editor.selection.moveOffset(start - end);
+		this.editor.selection.setOffset(Math.min(start, end));
 	}
 
 	html()
 	{
-		return `<div id="${this.id}" class="rt-paragraph">${this.text}</div>`;
+		return `<div id="${this.id}" class="rt-paragraph">${this.text.replace(/ /g, '&nbsp;')}</div>`;
 	}
 
 	getNode(offset: number): Node

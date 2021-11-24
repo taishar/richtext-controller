@@ -36,6 +36,12 @@ export class RTSelection
 		});
 	}
 
+	setOffset(offset: number)
+	{
+		this.anchor.textOffset = Math.max(0, offset);
+		this.focus.textOffset = Math.max(0, offset);
+	}
+
 	moveOffset(movement: number)
 	{
 		this.anchor.textOffset = Math.max(0, this.anchor.textOffset + movement);

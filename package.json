@@ -4,12 +4,14 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"serve": "webpack serve --open"
+		"serve": "webpack serve --open",
+		"http": "http-server"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
+		"http-server": "^14.0.0",
 		"ts-loader": "^9.2.4",
 		"typescript": "^4.3.5",
 		"webpack": "^5.47.0",

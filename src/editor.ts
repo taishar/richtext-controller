@@ -3,6 +3,8 @@
 import {RTSelection} from "./selection";
 import {RTParagraph} from "./paragraph";
 
+const alphanumeric = /^[\p{L}\p{N}]*$/u;
+
 export class RichTextEditor
 {
 	readonly element: HTMLElement;
@@ -26,7 +28,7 @@ export class RichTextEditor
 	{
 		this.element.addEventListener('keydown', (e) =>
 		{
-			console.log(e.key);
+			console.log(e.key, e);
 			switch (e.key)
 			{
 				case 'Escape':
@@ -56,8 +58,11 @@ export class RichTextEditor
 					e.preventDefault();
 					break;
 				default:
-					this.insertText(e.key);
-					e.preventDefault();
+					if (e.key.length === 1 || e.code === 'Space')
+					{
+						this.insertText(e.key);
+						e.preventDefault();
+					}
 					break;
 			}
 		});
